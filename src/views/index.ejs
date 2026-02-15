@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Captain's Log</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
+  </head>
+  <body>
+    <%- include('./partial/header'); %>
+
+    <main class="lcars-main">
+      <% if (posts.length === 0) {%>
+        <div class="empty-state">
+          <div class="empty-state__image">
+            <img src="/img/no-posts.gif" alt="Sem entradas">
+          </div>
+          <h1 class="empty-state__title">Ainda não existe nenhuma entrada no diário.</h1>
+          <p class="empty-state__text">Registre a primeira anotação do capitão para iniciar o histórico da missão.</p>
+          <a class="lcars-button lcars-button--primary" href="/post">Nova Entrada</a>
+        </div>
+      <% } else { %>
+        <div class="posts-list__container">
+          <div class="posts-list__grid">
+            <% for (var i = 0; i < posts.length; i++) { %>
+              <div class="posts-list__item">
+                <div class="post__card">
+                  <span class="post__card__date"><%= posts[i].publishDate %></span>
+                  <h4 class="post__card__title"><%= posts[i].title %></h4>
+                  <p class="post__card__description"><%= posts[i].summary %></p>
+                  <button class="lcars-button lcars-button--ghost" onclick="location.href='/post/<%= posts[i].id %>';">Abrir Registro</button>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+    </main>
+
+    <%- include('./partial/footer'); %>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+POST http://localhost:8080/api/post
+Content-Type: application/json
+
+{
+  "artigos": [
+    {
+      "title": "Entrada 001",
+      "resumo": "Início da missão",
+      "description": "Data estelar aproximada. Iniciamos o diário de bordo. Sistemas principais operacionais e equipe de prontidão."
+    },
+    {
+      "title": "Entrada 002",
+      "resumo": "Anomalia no setor 7",
+      "description": "Sensores detectaram variação incomum no setor 7. A nave ajustou o curso e iniciamos varredura completa."
+    },
+    {
+      "title": "Entrada 003",
+      "resumo": "Manutenção de rotina",
+      "description": "Substituição programada de módulos e verificação de redundância. Sem incidentes reportados."
+    }
+  ]
+}

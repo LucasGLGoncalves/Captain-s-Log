@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Captain's Log</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
+  </head>
+  <body>
+    <%- include('./partial/header'); %>
+
+    <main class="lcars-main">
+      <div class="post-form__container">
+        <h3 class="post-form__title">Nova Entrada</h3>
+
+        <form class="post-form__form" action="/post" method="post">
+          <div class="post-form__group">
+            <label class="post-form__label" for="title">Assunto</label>
+            <input type="text" class="post-form__input" id="title" name="title" placeholder="Ex: Relato de missão, status do turno, anomalia detectada..." value="<%= post.title %>">
+            <% if (valido === false) { %>
+              <div class="post-form__error">
+                Campo obrigatório. Máximo de 30 caracteres.
+              </div>
+            <% } %>
+          </div>
+
+          <div class="post-form__group">
+            <label class="post-form__label" for="resumo">Resumo</label>
+            <input type="text" class="post-form__input" id="resumo" name="resumo" placeholder="Resumo curto da entrada" value="<%= post.summary %>">
+            <% if (valido === false) { %>
+              <div class="post-form__error">
+                Campo obrigatório. Máximo de 50 caracteres.
+              </div>
+            <% } %>
+          </div>
+
+          <div class="post-form__group">
+            <label class="post-form__label" for="description">Registro</label>
+            <textarea class="post-form__textarea" id="description" name="description" cols="30" rows="10" placeholder="Escreva a entrada do diário do capitão..."><%= post.content %></textarea>
+            <% if (valido === false) { %>
+              <div class="post-form__error">
+                Campo obrigatório. Máximo de 2000 caracteres.
+              </div>
+            <% } %>
+          </div>
+
+          <button class="lcars-button lcars-button--primary" type="submit">Salvar Entrada</button>
+        </form>
+      </div>
+    </main>
+
+    <%- include('./partial/footer'); %>
+  </body>
+</html>
